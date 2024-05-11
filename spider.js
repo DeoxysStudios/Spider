@@ -1,4 +1,5 @@
 let blocksTag = document.getElementById("blocks-indicator");
+let timeTag = document.getElementById("time-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:00:00 PM");
 let currDate = new Date();
 let blocksFallen = 0;
@@ -23,8 +24,10 @@ var Timer = function(callback, delay) {
 
 function update_site() {
     currDate = new Date();
-    blocksFallen = Math.round((currDate - startDate) / 10);
+    time_fallen = currDate - startDate
+    blocksFallen = Math.floor(time_fallen / 10);
     blocksTag.textContent = add_commas(blocksFallen);
+    timeTag.textContent = time_tag(time_fallen);
     Timer(update_site, 10);
 }
 
@@ -39,6 +42,17 @@ function add_commas(x) {
         }
     }
     return outstr;
+}
+
+function time_tag(x) {
+    let seconds = Math.floor(x / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+    seconds -= 60 * minutes;
+    minutes -= 60 * hours;
+    hours -= 24 * days;
+    return `${add_commas(days)} days ${hours} hrs ${minutes} min ${seconds} sec`;
 }
 
 update_site();
