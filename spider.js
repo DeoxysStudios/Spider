@@ -1,7 +1,9 @@
 let blocksTag = document.getElementById("blocks-indicator");
+let annualTag = document.getElementById("annual-indicator");
 let timeTag = document.getElementById("time-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:00:00 PM");
 let currDate = new Date();
+let currYear = new Date(new Date().getFullYear(), 0, 1);
 let blocksFallen = 0;
 let timeout = null;
 
@@ -24,10 +26,13 @@ var Timer = function(callback, delay) {
 
 function update_site() {
     currDate = new Date();
-    time_fallen = currDate - startDate
+    time_fallen = currDate - startDate;
+    time_annual = currDate - currYear;
     blocksFallen = Math.floor(time_fallen / 10);
+    blocksAnnual = Math.floor(time_annual / 10);
     blocksTag.textContent = add_commas(blocksFallen);
     timeTag.textContent = time_tag(time_fallen);
+    annualTag.textContent = add_commas(blocksAnnual);
     Timer(update_site, 10);
 }
 
