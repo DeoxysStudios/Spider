@@ -1,7 +1,7 @@
 let blocksTag = document.getElementById("blocks-indicator");
 let annualTag = document.getElementById("annual-indicator");
 let timeTag = document.getElementById("time-indicator");
-let startDate = new Date("Tuesday, August 2, 2016 5:00:00 PM");
+let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
 let currDate = new Date();
 let currYear = new Date(new Date().getFullYear(), 0, 1);
 let blocksFallen = 0;
