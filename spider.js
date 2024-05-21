@@ -1,11 +1,14 @@
 let blocksTag = document.getElementById("blocks-indicator");
 let annualTag = document.getElementById("annual-indicator");
 let timeTag = document.getElementById("time-indicator");
+let feetTag = document.getElementById("feet-indicator");
+let meterTag = document.getElementById("meter-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
 let currDate = new Date();
 let currYear = new Date(new Date().getFullYear(), 0, 1);
 let blocksFallen = 0;
 let timeout = null;
+let FEETPERMETER = 3.280839895;
 
 var Timer = function(callback, delay) {
     var timerId, start, remaining = delay;
@@ -33,6 +36,8 @@ function update_site() {
     blocksTag.textContent = add_commas(blocksFallen);
     timeTag.textContent = time_tag(time_fallen);
     annualTag.textContent = add_commas(blocksAnnual);
+    meterTag.textContent = add_commas(blocksFallen);
+    feetTag.textContent = add_commas(Math.floor(blocksFallen * FEETPERMETER));
     Timer(update_site, 10);
 }
 
