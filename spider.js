@@ -1,6 +1,10 @@
 let blocksTag = document.getElementById("blocks-indicator");
 let annualTag = document.getElementById("annual-indicator");
 let timeTag = document.getElementById("time-indicator");
+let daysTag = document.getElementById("days-indicator");
+let hoursTag = document.getElementById("hours-indicator");
+let minutesTag = document.getElementById("minutes-indicator");
+let secondsTag = document.getElementById("seconds-indicator");
 let feetTag = document.getElementById("feet-indicator");
 let meterTag = document.getElementById("meter-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
@@ -35,6 +39,10 @@ function update_site() {
     blocksAnnual = Math.floor(time_annual / 10);
     blocksTag.textContent = add_commas(blocksFallen);
     timeTag.textContent = time_tag(time_fallen);
+    daysTag.textContent = add_commas(Math.floor(time_fallen / 86400000));
+    hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
+    minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
+    secondsTag.textContent = add_commas(Math.floor(time_fallen / 1000));
     annualTag.textContent = add_commas(blocksAnnual);
     meterTag.textContent = add_commas(blocksFallen);
     feetTag.textContent = add_commas(Math.floor(blocksFallen * FEETPERMETER));
