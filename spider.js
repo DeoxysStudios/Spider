@@ -6,7 +6,6 @@ let hoursTag = document.getElementById("hours-indicator");
 let minutesTag = document.getElementById("minutes-indicator");
 let secondsTag = document.getElementById("seconds-indicator");
 let feetTag = document.getElementById("feet-indicator");
-let meterTag = document.getElementById("meter-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
 let currDate = new Date();
 let currYear = new Date(new Date().getFullYear(), 0, 1);
@@ -44,7 +43,6 @@ function update_site() {
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
     secondsTag.textContent = add_commas(Math.floor(time_fallen / 1000));
     annualTag.textContent = add_commas(blocksAnnual);
-    meterTag.textContent = add_commas(blocksFallen);
     feetTag.textContent = add_commas(Math.floor(blocksFallen * FEETPERMETER));
     Timer(update_site, 10);
 }
