@@ -4,6 +4,8 @@ let timeTag = document.getElementById("time-indicator");
 let hoursTag = document.getElementById("hours-indicator");
 let minutesTag = document.getElementById("minutes-indicator");
 let secondsTag = document.getElementById("seconds-indicator");
+let dateTag = document.getElementById("date-indicator");
+let currTimeTag = document.getElementById("curr-time-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
 let currDate = new Date();
 let currYear = new Date(new Date().getFullYear(), 0, 1);
@@ -39,6 +41,14 @@ function update_site() {
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
     secondsTag.textContent = add_commas(Math.floor(time_fallen / 1000));
     annualTag.textContent = add_commas(blocksAnnual);
+    monthstr = set_digits(currDate.getMonth() + 1, 2);
+    daystr = set_digits(currDate.getDate(), 2);
+    yearstr = set_digits(currDate.getFullYear(), 4);
+    hrstr = set_digits(currDate.getHours(), 2);
+    minstr = set_digits(currDate.getMinutes(), 2);
+    secstr = set_digits(currDate.getSeconds(), 2);
+    dateTag.textContent = monthstr + `/` + daystr + `/` + yearstr;
+    currTimeTag.textContent = hrstr + `:` + minstr + `:` + secstr + ` EST`;
     Timer(update_site, 10);
 }
 
@@ -51,6 +61,14 @@ function add_commas(x) {
         if (((i % 3) == 0) && (i != n)) {
             outstr = `,` + outstr;
         }
+    }
+    return outstr;
+}
+
+function set_digits(x, num_digits) {
+    let outstr = `${x}`;
+    while (outstr.length < num_digits) {
+        outstr = `0` + outstr;
     }
     return outstr;
 }
