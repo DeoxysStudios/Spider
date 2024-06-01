@@ -46,8 +46,8 @@ function update_site() {
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
     secondsTag.textContent = add_commas(Math.floor(time_fallen / 1000));
-    annualTag.textContent = add_commas(blocksAnnual) + ` blocks/meters`;
-    todayTag.textContent = add_commas(blocksToday) + ` blocks/meters`;
+    annualTag.textContent = add_commas(blocksAnnual);
+    todayTag.textContent = add_commas(blocksToday);
     monthstr = set_digits(currDate.getMonth() + 1, 2);
     daystr = set_digits(currDate.getDate(), 2);
     yearstr = set_digits(currDate.getFullYear(), 4);
