@@ -1,11 +1,12 @@
 body {
-    background-image: url('https://i.pinimg.com/originals/c0/37/47/c03747d532cb3e3a4db1e0da2ebc2a6c.gif');
     text-align: center;
+    background-image: url('https://i.pinimg.com/originals/c0/37/47/c03747d532cb3e3a4db1e0da2ebc2a6c.gif');
 }
 
 .infobox {
-    border: 3px outset grey;
+    border: 2px outset grey;
     padding: 2px;
     background-color: lightgrey;
     display: inline-block;
+    width: 400px;
 }

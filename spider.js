@@ -5,12 +5,16 @@ let hoursTag = document.getElementById("hours-indicator");
 let minutesTag = document.getElementById("minutes-indicator");
 let secondsTag = document.getElementById("seconds-indicator");
 let dateTag = document.getElementById("date-indicator");
-let currTimeTag = document.getElementById("curr-time-indicator");
+let todayTag = document.getElementById("today-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
 let currDate = new Date();
+let currDay = new Date();
+currDay.setHours(0, 0, 0, 0);
 let currYear = new Date(new Date().getFullYear(), 0, 1);
 let blocksFallen = 0;
 let timeout = null;
+
+let DARKEST = 0.2;
 
 var Timer = function(callback, delay) {
     var timerId, start, remaining = delay;
@@ -33,22 +37,24 @@ function update_site() {
     currDate = new Date();
     time_fallen = currDate - startDate;
     time_annual = currDate - currYear;
+    time_today = currDate - currDay;
     blocksFallen = Math.floor(time_fallen / 10);
     blocksAnnual = Math.floor(time_annual / 10);
+    blocksToday = Math.floor(time_today / 10);
     blocksTag.textContent = add_commas(blocksFallen);
     timeTag.textContent = time_tag(time_fallen);
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
     secondsTag.textContent = add_commas(Math.floor(time_fallen / 1000));
-    annualTag.textContent = add_commas(blocksAnnual);
+    annualTag.textContent = add_commas(blocksAnnual) + ` blocks/meters`;
+    todayTag.textContent = add_commas(blocksToday) + ` blocks/meters`;
     monthstr = set_digits(currDate.getMonth() + 1, 2);
     daystr = set_digits(currDate.getDate(), 2);
     yearstr = set_digits(currDate.getFullYear(), 4);
     hrstr = set_digits(currDate.getHours(), 2);
     minstr = set_digits(currDate.getMinutes(), 2);
     secstr = set_digits(currDate.getSeconds(), 2);
-    dateTag.textContent = monthstr + `/` + daystr + `/` + yearstr;
-    currTimeTag.textContent = hrstr + `:` + minstr + `:` + secstr + ` EDT`;
+    dateTag.textContent = monthstr + `/` + daystr + `/` + yearstr + ` | ` + hrstr + `:` + minstr + `:` + secstr + ` EDT`;
     Timer(update_site, 10);
 }
 
