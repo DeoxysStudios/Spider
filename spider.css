@@ -10,3 +10,7 @@ body {
     display: inline-block;
     width: 400px;
 }
+
+.header {
+    font-size: 120%;
+}
