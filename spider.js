@@ -57,7 +57,7 @@ function update_site() {
     minstr = set_digits(currDate.getMinutes(), 2);
     secstr = set_digits(currDate.getSeconds(), 2);
     dateTag.textContent = monthstr + `/` + daystr + `/` + yearstr + ` | ` + hrstr + `:` + minstr + `:` + secstr + ` EDT`;
-    backTag.style.filter = `brightness(${daylight(currDate - currDay)})`;
+    //backTag.style.filter = `brightness(${daylight(currDate - currDay)})`;
     Timer(update_site, 10);
 }
 
