@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-image: url('https://i.pinimg.com/originals/c0/37/47/c03747d532cb3e3a4db1e0da2ebc2a6c.gif');
+    height: 1600px;
 }
 
 .infobox {
@@ -11,6 +11,20 @@ body {
     width: 400px;
     box-sizing: border-box;
     position: relative;
+}
+
+.background {
+    background-image: url('https://i.pinimg.com/originals/c0/37/47/c03747d532cb3e3a4db1e0da2ebc2a6c.gif');
+    position: absolute;
+    width: 100%;
+    padding: 0px;
+    top: 0px;
+    height: 1700px;
+    left: 0px;
+    box-sizing: border-box;
+    background-repeat: repeat;
+    z-index: -1;
+
 }
 
 .header {
