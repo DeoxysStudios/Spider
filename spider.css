@@ -20,7 +20,7 @@ body {
 .topbox {
     position: absolute;
     width: 100%;
-    height: 100px
+    height: 100px;
     top: 0px;
     box-sizing: border-box;
     background-color: white;
