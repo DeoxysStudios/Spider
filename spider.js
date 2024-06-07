@@ -8,8 +8,8 @@ let dateTag = document.getElementById("date-indicator");
 let todayTag = document.getElementById("today-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
 let currDate = new Date();
-let currDay = new Date();
 let backTag = document.getElementById("background");
+let currDay = new Date();
 currDay.setHours(0, 0, 0, 0);
 let currYear = new Date(new Date().getFullYear(), 0, 1);
 let blocksFallen = 0;
@@ -37,6 +37,9 @@ var Timer = function(callback, delay) {
 
 function update_site() {
     currDate = new Date();
+    currDay = new Date();
+    currDay.setHours(0, 0, 0, 0);
+    currYear = new Date(new Date().getFullYear(), 0, 1);
     time_fallen = currDate - startDate;
     time_annual = currDate - currYear;
     time_today = currDate - currDay;
