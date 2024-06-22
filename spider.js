@@ -1,5 +1,7 @@
 let blocksTag = document.getElementById("blocks-indicator");
 let annualTag = document.getElementById("annual-indicator");
+let kmTag = document.getElementById("km-indicator");
+let milesTag = document.getElementById("miles-indicator");
 let timeTag = document.getElementById("time-indicator");
 let hoursTag = document.getElementById("hours-indicator");
 let minutesTag = document.getElementById("minutes-indicator");
@@ -15,6 +17,7 @@ let currYear = new Date(new Date().getFullYear(), 0, 1);
 let blocksFallen = 0;
 let timeout = null;
 let HOURMS = 3600000;
+let METERMILE = 1609.34;
 
 let DARKEST = 0.4;
 
@@ -47,6 +50,8 @@ function update_site() {
     blocksAnnual = Math.floor(time_annual / 10);
     blocksToday = Math.floor(time_today / 10);
     blocksTag.textContent = add_commas(blocksFallen);
+    kmTag.textContent = add_commas(Math.round(blocksFallen / 10) / 100);
+    milesTag.textContent = add_commas(Math.round(blocksFallen / METERMILE * 100) / 100);
     timeTag.textContent = time_tag(time_fallen);
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
@@ -68,6 +73,9 @@ function add_commas(x) {
     let outstr = ``;
     let instr = `${x}`;
     let n = instr.length;
+    if (x % 1 != 0) {
+        return add_commas(Math.floor(x)) + `.` + set_decimal_digits(x, 2);
+    }
     for (let i = 1; i <= n; i++) {
         outstr = instr[n - i] + outstr;
         if (((i % 3) == 0) && (i != n)) {
@@ -81,6 +89,15 @@ function set_digits(x, num_digits) {
     let outstr = `${x}`;
     while (outstr.length < num_digits) {
         outstr = `0` + outstr;
+    }
+    return outstr;
+}
+
+function set_decimal_digits(x, num_digits) {
+    let outstr = `${x}`;
+    outstr = outstr.split(`.`)[1];
+    while (outstr.length < num_digits) {
+        outstr = outstr + `0`;
     }
     return outstr;
 }
