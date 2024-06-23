@@ -50,8 +50,8 @@ function update_site() {
     blocksAnnual = Math.floor(time_annual / 10);
     blocksToday = Math.floor(time_today / 10);
     blocksTag.textContent = add_commas(blocksFallen);
-    kmTag.textContent = add_commas(Math.round(blocksFallen / 10) / 100);
-    milesTag.textContent = add_commas(Math.round(blocksFallen / METERMILE * 100) / 100);
+    kmTag.textContent = decimal_round(Math.floor(blocksFallen / 10) / 100);
+    milesTag.textContent = decimal_round(Math.floor(blocksFallen / METERMILE * 100) / 100);
     timeTag.textContent = time_tag(time_fallen);
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
@@ -83,6 +83,13 @@ function add_commas(x) {
         }
     }
     return outstr;
+}
+
+function decimal_round(x) {
+    if (x % 1 == 0) {
+        return add_commas(x) + `.00`;
+    }
+    return add_commas(x);
 }
 
 function set_digits(x, num_digits) {
