@@ -1,6 +1,8 @@
 body {
     text-align: center;
     height: 1600px;
+    background-image: url("https://www.rand.org/content/rand/pubs/articles/2020/civilians-and-military-collaborate-to-address-climate-change/jcr:content/par/blogpost.crop.1776x1044.cm.webp/1588984686447.webp");
+    background-size: 50%;
 }
 
 .infobox {
@@ -14,15 +16,6 @@ body {
 }
 
 .background {
-    /*background-image: url('https://i.pinimg.com/originals/c0/37/47/c03747d532cb3e3a4db1e0da2ebc2a6c.gif');*/
-    position: absolute;
-    width: 100%;
-    padding: 0px;
-    top: 0px;
-    height: 1700px;
-    left: 0px;
-    box-sizing: border-box;
-    background-repeat: repeat;
     z-index: -1;
 
 }
