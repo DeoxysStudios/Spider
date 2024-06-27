@@ -2,6 +2,7 @@ let blocksTag = document.getElementById("blocks-indicator");
 let annualTag = document.getElementById("annual-indicator");
 let kmTag = document.getElementById("km-indicator");
 let milesTag = document.getElementById("miles-indicator");
+let earthTag = document.getElementById("earth-indicator");
 let timeTag = document.getElementById("time-indicator");
 let hoursTag = document.getElementById("hours-indicator");
 let minutesTag = document.getElementById("minutes-indicator");
@@ -17,6 +18,7 @@ let blocksFallen = 0;
 let timeout = null;
 let HOURMS = 3600000;
 let METERMILE = 1609.34;
+let EARTHRADIUS = 6371000;
 
 let DARKEST = 0.4;
 
@@ -51,6 +53,7 @@ function update_site() {
     blocksTag.textContent = add_commas(blocksFallen);
     kmTag.textContent = decimal_round(Math.floor(blocksFallen / 10) / 100);
     milesTag.textContent = decimal_round(Math.floor(blocksFallen / METERMILE * 100) / 100);
+    earthTag.textContent = decimal_round(Math.floor(blocksFallen * 50 / (EARTHRADIUS * Math.PI)) / 100);
     timeTag.textContent = time_tag(time_fallen);
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
