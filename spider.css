@@ -1,8 +1,9 @@
 body {
     text-align: center;
     height: 1600px;
-    background-image: url("https://www.rand.org/content/rand/pubs/articles/2020/civilians-and-military-collaborate-to-address-climate-change/jcr:content/par/blogpost.crop.1776x1044.cm.webp/1588984686447.webp");
-    background-size: 50%;
+    background-image: url("https://img.freepik.com/free-photo/anime-style-clouds_23-2151071748.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .infobox {
@@ -13,11 +14,6 @@ body {
     width: 400px;
     box-sizing: border-box;
     position: relative;
-}
-
-.background {
-    z-index: -1;
-
 }
 
 .header {

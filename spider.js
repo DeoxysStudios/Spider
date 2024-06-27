@@ -10,7 +10,6 @@ let dateTag = document.getElementById("date-indicator");
 let todayTag = document.getElementById("today-indicator");
 let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
 let currDate = new Date();
-let backTag = document.getElementById("background");
 let currDay = new Date();
 currDay.setHours(0, 0, 0, 0);
 let currYear = new Date(new Date().getFullYear(), 0, 1);
@@ -65,7 +64,6 @@ function update_site() {
     minstr = set_digits(currDate.getMinutes(), 2);
     secstr = set_digits(currDate.getSeconds(), 2);
     dateTag.textContent = monthstr + `/` + daystr + `/` + yearstr + ` | ` + hrstr + `:` + minstr + `:` + secstr + ` EDT`;
-    //backTag.style.filter = `brightness(${daylight(currDate - currDay)})`;
     Timer(update_site, 10);
 }
 
@@ -107,19 +105,6 @@ function set_decimal_digits(x, num_digits) {
         outstr = outstr + `0`;
     }
     return outstr;
-}
-
-function daylight(x) {
-    if ((x <= 5 * HOURMS) || (x >= 19 * HOURMS)) {
-        return DARKEST;
-    }
-    if ((x >= 7 * HOURMS) && (x <= 17 * HOURMS)) {
-        return 1;
-    }
-    if (x > 17 * HOURMS) {
-        return (x - 19 * HOURMS) * (DARKEST - 1) / (2 * HOURMS) + DARKEST;
-    }
-    return (x - 5 * HOURMS) * (1 - DARKEST) / (2 * HOURMS) + DARKEST;
 }
 
 function time_tag(x) {
