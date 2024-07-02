@@ -53,7 +53,7 @@ function update_site() {
     blocksTag.textContent = add_commas(blocksFallen);
     kmTag.textContent = decimal_round(Math.floor(blocksFallen / 10) / 100);
     milesTag.textContent = decimal_round(Math.floor(blocksFallen / METERMILE * 100) / 100);
-    earthTag.textContent = decimal_round(Math.floor(blocksFallen * 50 / (EARTHRADIUS * Math.PI)) / 100);
+    earthTag.textContent = decimal_round_3(Math.floor(blocksFallen * 50 / EARTHRADIUS) / 100);
     timeTag.textContent = time_tag(time_fallen);
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
@@ -86,11 +86,34 @@ function add_commas(x) {
     return outstr;
 }
 
+function add_commas_3(x) {
+    let outstr = ``;
+    let instr = `${x}`;
+    let n = instr.length;
+    if (x % 1 != 0) {
+        return add_commas_3(Math.floor(x)) + `.` + set_decimal_digits(x, 3);
+    }
+    for (let i = 1; i <= n; i++) {
+        outstr = instr[n - i] + outstr;
+        if (((i % 3) == 0) && (i != n)) {
+            outstr = `,` + outstr;
+        }
+    }
+    return outstr;
+}
+
 function decimal_round(x) {
     if (x % 1 == 0) {
         return add_commas(x) + `.00`;
     }
     return add_commas(x);
+}
+
+function decimal_round_3(x) {
+    if (x % 1 == 0) {
+        return add_commas_3(x) + `.000`;
+    }
+    return add_commas_3(x);
 }
 
 function set_digits(x, num_digits) {
