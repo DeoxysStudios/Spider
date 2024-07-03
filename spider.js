@@ -53,7 +53,7 @@ function update_site() {
     blocksTag.textContent = add_commas(blocksFallen);
     kmTag.textContent = decimal_round(Math.floor(blocksFallen / 10) / 100);
     milesTag.textContent = decimal_round(Math.floor(blocksFallen / METERMILE * 100) / 100);
-    earthTag.textContent = decimal_round_3(Math.floor(blocksFallen * 50 / EARTHRADIUS) / 100);
+    earthTag.textContent = decimal_round(Math.floor(1000 * blocksFallen / (2 * EARTHRADIUS)) / 1000, 3);
     timeTag.textContent = time_tag(time_fallen);
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
@@ -70,12 +70,12 @@ function update_site() {
     Timer(update_site, 10);
 }
 
-function add_commas(x) {
+function add_commas(x, num_decimals = 2) {
     let outstr = ``;
     let instr = `${x}`;
     let n = instr.length;
     if (x % 1 != 0) {
-        return add_commas(Math.floor(x)) + `.` + set_decimal_digits(x, 2);
+        return add_commas(Math.floor(x)) + `.` + set_decimal_digits(x, num_decimals);
     }
     for (let i = 1; i <= n; i++) {
         outstr = instr[n - i] + outstr;
@@ -86,34 +86,11 @@ function add_commas(x) {
     return outstr;
 }
 
-function add_commas_3(x) {
-    let outstr = ``;
-    let instr = `${x}`;
-    let n = instr.length;
-    if (x % 1 != 0) {
-        return add_commas_3(Math.floor(x)) + `.` + set_decimal_digits(x, 3);
-    }
-    for (let i = 1; i <= n; i++) {
-        outstr = instr[n - i] + outstr;
-        if (((i % 3) == 0) && (i != n)) {
-            outstr = `,` + outstr;
-        }
-    }
-    return outstr;
-}
-
-function decimal_round(x) {
+function decimal_round(x, num_digits = 2) {
     if (x % 1 == 0) {
-        return add_commas(x) + `.00`;
+        return add_commas(x) + `.` + `0`.repeat(num_digits);
     }
-    return add_commas(x);
-}
-
-function decimal_round_3(x) {
-    if (x % 1 == 0) {
-        return add_commas_3(x) + `.000`;
-    }
-    return add_commas_3(x);
+    return add_commas(x, num_digits);
 }
 
 function set_digits(x, num_digits) {
@@ -141,6 +118,9 @@ function time_tag(x) {
     seconds -= 60 * minutes;
     minutes -= 60 * hours;
     hours -= 24 * days;
+    if (hours == 1) {
+        return `${add_commas(days)} days ${hours} hr ${minutes} min ${seconds} sec`;
+    }
     return `${add_commas(days)} days ${hours} hrs ${minutes} min ${seconds} sec`;
 }
 
