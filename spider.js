@@ -66,7 +66,8 @@ function update_site() {
     hrstr = set_digits(currDate.getHours(), 2);
     minstr = set_digits(currDate.getMinutes(), 2);
     secstr = set_digits(currDate.getSeconds(), 2);
-    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + ` ` + hrstr + `:` + minstr + `:` + secstr + ` EDT`;
+    msstr = set_digits(currDate.getMilliseconds(), 3);
+    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + ` ` + hrstr + `:` + minstr + `:` + secstr + `.` + msstr;
     Timer(update_site, 10);
 }
 
