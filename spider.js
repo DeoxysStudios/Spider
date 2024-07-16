@@ -63,18 +63,11 @@ function update_site() {
     monthstr = set_digits(currDate.getMonth() + 1, 2);
     daystr = set_digits(currDate.getDate(), 2);
     yearstr = set_digits(currDate.getFullYear(), 4);
-    currHour = currDate.getHours() % 12;
-    if (currHour == 0) {
-        currHour = 12;
-    }
+    currHour = currDate.getHours();
     hrstr = set_digits(currHour, 2);
-    ampmstr = "pm";
-    if (currDate.getHours() < 12) {
-        ampmstr = "am";
-    }
     minstr = set_digits(currDate.getMinutes(), 2);
     secstr = set_digits(currDate.getSeconds(), 2);
-    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + ` ` + hrstr + `:` + minstr + `:` + secstr + ` ` + ampmstr;
+    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + ` ` + hrstr + `:` + minstr + `:` + secstr + ` EDT`;
     Timer(update_site, 10);
 }
 
