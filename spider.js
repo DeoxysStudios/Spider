@@ -53,7 +53,8 @@ function update_site() {
     blocksTag.textContent = add_commas(blocksFallen);
     kmTag.textContent = decimal_round(Math.floor(blocksFallen / 10) / 100);
     milesTag.textContent = decimal_round(Math.floor(blocksFallen / METERMILE * 100) / 100);
-    earthTag.textContent = decimal_round(Math.floor(1000 * blocksFallen / (2 * EARTHRADIUS)) / 1000, 3);
+    //earthTag.textContent = decimal_round(Math.floor(1000 * blocksFallen / (2 * EARTHRADIUS)) / 1000, 3);
+    earthTag.textContent = decimal_round((blocksFallen / (2 * EARTHRADIUS)), 12);
     timeTag.textContent = time_tag(time_fallen);
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
@@ -63,11 +64,18 @@ function update_site() {
     monthstr = set_digits(currDate.getMonth() + 1, 2);
     daystr = set_digits(currDate.getDate(), 2);
     yearstr = set_digits(currDate.getFullYear(), 4);
-    hrstr = set_digits(currDate.getHours(), 2);
+    currHour = currDate.getHours() % 12;
+    if (currHour == 0) {
+        currHour = 12;
+    }
+    hrstr = set_digits(currHour, 2);
+    ampmstr = "p.m.";
+    if (currDate.getHours() < 12) {
+        ampmstr = "a.m.";
+    }
     minstr = set_digits(currDate.getMinutes(), 2);
     secstr = set_digits(currDate.getSeconds(), 2);
-    msstr = set_digits(currDate.getMilliseconds(), 3);
-    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + ` ` + hrstr + `:` + minstr + `:` + secstr + `.` + msstr;
+    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + ` ` + hrstr + `:` + minstr + `:` + secstr + ` ` + ampmstr;
     Timer(update_site, 10);
 }
 
