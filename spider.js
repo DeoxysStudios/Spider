@@ -119,10 +119,7 @@ function time_tag(x) {
     seconds -= 60 * minutes;
     minutes -= 60 * hours;
     hours -= 24 * days;
-    if (hours == 1) {
-        return `${add_commas(days)} days ${hours} hr ${minutes} min ${seconds} sec`;
-    }
-    return `${add_commas(days)} days ${hours} hrs ${minutes} min ${seconds} sec`;
+    return `${add_commas(days)} days ${set_digits(hours, 2)} hrs ${set_digits(minutes, 2)} min ${set_digits(seconds, 2)} sec`;
 }
 
 update_site();
