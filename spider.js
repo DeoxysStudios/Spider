@@ -67,7 +67,7 @@ function update_site() {
     hrstr = set_digits(currHour, 2);
     minstr = set_digits(currDate.getMinutes(), 2);
     secstr = set_digits(currDate.getSeconds(), 2);
-    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + ` ` + hrstr + `:` + minstr + `:` + secstr + ` EDT`;
+    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + `\xa0\xa0` + hrstr + `:` + minstr + `:` + secstr + ` EDT`;
     Timer(update_site, 10);
 }
 
@@ -119,10 +119,22 @@ function time_tag(x) {
     seconds -= 60 * minutes;
     minutes -= 60 * hours;
     hours -= 24 * days;
+    daystr = `${add_commas(days)} days `;
+    hrstr = `${hours} hrs `;
+    minstr = `${minutes} min `;
+    secstr = `${seconds} sec`;
     if (hours == 1) {
-        return `${add_commas(days)} days ${hours} hr ${minutes} min ${seconds} sec`;
+        hrstr = `\xa01 hr `;
+    } else if (hours < 10) {
+        hrstr = `\xa0${hours} hrs `;
     }
-    return `${add_commas(days)} days ${hours} hrs ${minutes} min ${seconds} sec`;
+    if (minutes < 10) {
+        minstr = `\xa0${minutes} min `;
+    }
+    if (seconds < 10) {
+        secstr = `\xa0${seconds} sec`
+    }
+    return daystr + hrstr + minstr + secstr;
 }
 
 update_site();
