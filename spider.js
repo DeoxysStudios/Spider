@@ -43,6 +43,13 @@ function update_site() {
     currDate = new Date();
     currDay = new Date();
     currDay.setHours(0, 0, 0, 0);
+    fullDateStr = `${currDate}`;
+    timeZone = fullDateStr.split('(')[1];
+    timeZoneChars = timeZone.split(' ');
+    timeZoneStr = '';
+    for (let i = 0; i < timeZoneChars.length; i++) {
+        timeZoneStr += timeZoneChars[i][0];
+    }
     currYear = new Date(new Date().getFullYear(), 0, 1);
     time_fallen = currDate - startDate;
     time_annual = currDate - currYear;
@@ -67,7 +74,7 @@ function update_site() {
     hrstr = set_digits(currHour, 2);
     minstr = set_digits(currDate.getMinutes(), 2);
     secstr = set_digits(currDate.getSeconds(), 2);
-    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + `\xa0\xa0` + hrstr + `:` + minstr + `:` + secstr + ` EDT`;
+    dateTag.textContent = yearstr + `-` + monthstr + `-` + daystr + `\xa0\xa0` + hrstr + `:` + minstr + `:` + secstr + ` ` + timeZoneStr;
     Timer(update_site, 10);
 }
 
