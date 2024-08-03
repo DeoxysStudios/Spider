@@ -9,7 +9,7 @@ let minutesTag = document.getElementById("minutes-indicator");
 let secondsTag = document.getElementById("seconds-indicator");
 let dateTag = document.getElementById("date-indicator");
 let todayTag = document.getElementById("today-indicator");
-let startDate = new Date("Tuesday, August 2, 2016 5:48:32 PM");
+let startDate = new Date("Tue Aug 02 2016 17:48:32 GMT-0700 (Eastern Daylight Time)");
 let currDate = new Date();
 let currDay = new Date();
 currDay.setHours(0, 0, 0, 0);
