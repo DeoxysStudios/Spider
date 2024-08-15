@@ -10,7 +10,7 @@ let secondsTag = document.getElementById("seconds-indicator");
 let dateTag = document.getElementById("date-indicator");
 let todayTag = document.getElementById("today-indicator");
 let currDate = new Date();
-let startDate = new Date("Tue Aug 02 2016 17:48:32 GMT-0700 (Eastern Daylight Time)") - (currDate.getTimezoneOffset() - 240) * 60000;
+let startDate = new Date("Tue Aug 02 2016 14:48:32 GMT-0700 (Eastern Daylight Time)");
 let currDay = new Date();
 currDay.setHours(0, 0, 0, 0);
 let currYear = new Date(new Date().getFullYear(), 0, 1);
