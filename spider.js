@@ -60,7 +60,7 @@ function update_site() {
     blocksTag.textContent = add_commas(blocksFallen);
     kmTag.textContent = decimal_round(Math.floor(blocksFallen / 10) / 100);
     milesTag.textContent = decimal_round(Math.floor(blocksFallen / METERMILE * 100) / 100);
-    earthTag.textContent = decimal_round(Math.floor(1000 * blocksFallen / (2 * EARTHRADIUS)) / 1000, 3);
+    earthTag.textContent = decimal_round(Math.floor(10000000000000 * blocksFallen / (2 * EARTHRADIUS)) / 10000000000000, 13);
     timeTag.textContent = time_tag(time_fallen);
     hoursTag.textContent = add_commas(Math.floor(time_fallen / 3600000));
     minutesTag.textContent = add_commas(Math.floor(time_fallen / 60000));
